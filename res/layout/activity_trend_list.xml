@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/lightgrey"
+    android:orientation="vertical"
+    tools:context="edu.sbcc.c123.Trendoid.TrendListActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <ListView
+        android:id="@+id/trend_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#FFFFFF"
+        android:divider="@drawable/lightgrey"
+        android:dividerHeight="4dp" >
+
+    </ListView>
+    
+
+</LinearLayout>
