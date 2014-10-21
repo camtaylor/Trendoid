@@ -31,8 +31,6 @@ public class TrendListActivity extends Activity implements OnItemClickListener {
 	ArrayList<Trend> trendArray = new ArrayList<Trend>();
 	ListView trendView;
 
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -41,17 +39,14 @@ public class TrendListActivity extends Activity implements OnItemClickListener {
 		setContentView(R.layout.activity_trend_list);
 
 		GoogleTrends google = new GoogleTrends();
-		AolTrends aol = new AolTrends();
 		TwitterTrends twitter = new TwitterTrends();
 		WikipediaTrends wikipedia = new WikipediaTrends();
 
 		google.execute();
 		twitter.execute();
 		wikipedia.execute();
-		//aol.execute();
 
 	}
-
 
 	// async task to get google trends
 	private class GoogleTrends extends
@@ -71,44 +66,6 @@ public class TrendListActivity extends Activity implements OnItemClickListener {
 
 				for (Element el : trends) {
 					trendArray.add(new Trend("google", el.text(), ""));
-				}
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			ArrayList<Trend> trendsList = trendArray;
-			return trendsList;
-		}
-
-		@Override
-		protected void onPostExecute(ArrayList<Trend> result) {
-			// TODO Auto-generated method stub
-			createList();
-		}
-
-	}
-
-	private class AolTrends extends
-			AsyncTask<ArrayList<Trend>, ArrayList<Trend>, ArrayList<Trend>> {
-
-		@Override
-		protected ArrayList<Trend> doInBackground(ArrayList<Trend>... params) {
-			// Gets the jsoup document
-			try {
-				Document doc = Jsoup
-						.connect("http://search.aol.com/aol/trends").get();
-				Elements content = doc.getElementsByTag("ol");
-				Elements trends = content.select("a");
-
-				int i = 0;
-				for (Element el : trends) {
-					if (i < 20) {
-						trendArray.add(new Trend("aol", el.text(), ""));
-						i++;
-					} else {
-						break;
-					}
 				}
 
 			} catch (IOException e) {

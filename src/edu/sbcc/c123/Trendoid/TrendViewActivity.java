@@ -5,12 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ShareActionProvider;
+import android.support.v7.widget.ShareActionProvider;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class TrendViewActivity extends Activity {
@@ -34,7 +35,7 @@ public class TrendViewActivity extends Activity {
 		setTitle(itemText);
 		trendWebView.setWebViewClient(new MyWebViewClient());
 
-		if (sourceText.equals("google") || sourceText.equals("aol"))
+		if (sourceText.equals("google"))
 			trendWebView.loadUrl(createGoogleUrl(itemText));
 		else if (sourceText.equals("twitter")) {
 			trendWebView.loadUrl(createTwitterUrl(itemText));
